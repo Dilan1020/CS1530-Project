@@ -1,7 +1,7 @@
 <template>
-  <div class="Discover">
-    <h2>Discover nearby hot topics</h2>
-  </div>
+	<div class="discover">
+		<h2>Discover nearby hot topics</h2>
+	</div>
 </template>
 
 <style lang="scss">

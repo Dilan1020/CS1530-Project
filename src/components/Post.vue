@@ -2,15 +2,16 @@
 	<div class="post">
 		something
 		<h4>post</h4>
+
 	</div>
 </template>
 
 <script>
 export default {
-  name: 'Post',
-  props: {
-    msg: String
-  }
+	name: 'Post',
+		props: {
+			msg: String
+	}
 }
 </script>
 

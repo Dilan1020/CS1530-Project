@@ -8,11 +8,13 @@
 }
 
 #nav {
-	padding: 20px 25px 20px 25px;
+	padding: 20px 0px 20px 10px;
 	margin: 0;
 	background-color: #5940DF;
 	color: white;
 	width: 100vw;
+	position: fixed;
+	top:0px;
 	a {
 		font-weight: bold;
 		color: white;
@@ -25,13 +27,17 @@
 body {
 	margin: 0px;;
 }
+.discover{
+	top: 80px;
+	position: absolute;
+}
 .home {
 	// background-color: blue;
+	margin-top: 80px;
+	// position: absolute;
 }
 
 .post {
-	// background-color: #D6D0F9;
-	border: 3px solid #D6D0F9;
-	border-radius: 5px;
+	border-bottom: 3px solid #D6D0F9;
 	width: 100%;
 }
