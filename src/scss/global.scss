@@ -8,7 +8,7 @@
 }
 
 #nav {
-	padding: 20px 0px 20px 14px;
+	padding: 20px 0px 20px 0px;
 	margin: 0;
 	background-color: #5940DF;
 	color: white;
@@ -45,10 +45,38 @@ body {
 	box-sizing: border-box;
 	border-right: 2px solid #5940DF;
 }
+.newpostbutton {
+	position: fixed;
+	right: 10px;
+	top: 15px;
+}
 .count{
 
 }
 .vote {
 	display: inline-block;
 	width: 20vw;
+}
+.newpostcontainer{
+	top: 80px;
+	position: absolute;
+	width: 100vw;
+	bottom: 0px;
+}
+.posttext {
+	width: calc(100% - 50px);
+	height: 200px;
+	border: 1px solid grey;
+}
+.postbutton {
+	position: absolute;
+	bottom: 25px;
+	height: 30px;
+	width: 80px;
+	right: 20px;
+	background-color: #5940DF;
+	color:white;
+	border-radius: 10px;
+	padding-top: 4px;
+	border: none;
 }
