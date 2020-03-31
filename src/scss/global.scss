@@ -57,3 +57,13 @@ body {
 	display: inline-block;
 	width: 20vw;
 }
+.newposttext {
+	width: calc(100% - 50px);
+	height: 200px;
+}
+.newpostbutton {
+	position: relative;
+	bottom: 10px;
+	height: 20px;
+	
+}
