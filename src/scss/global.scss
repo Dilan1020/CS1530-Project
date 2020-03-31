@@ -57,13 +57,26 @@ body {
 	display: inline-block;
 	width: 20vw;
 }
-.newposttext {
+.newpostcontainer{
+	top: 80px;
+	position: absolute;
+	width: 100vw;
+	bottom: 0px;
+}
+.posttext {
 	width: calc(100% - 50px);
 	height: 200px;
+	border: 1px solid grey;
 }
-.newpostbutton {
-	position: relative;
-	bottom: 10px;
-	height: 20px;
-	
+.postbutton {
+	position: absolute;
+	bottom: 25px;
+	height: 30px;
+	width: 80px;
+	right: 20px;
+	background-color: #5940DF;
+	color:white;
+	border-radius: 10px;
+	padding-top: 4px;
+	border: none;
 }
