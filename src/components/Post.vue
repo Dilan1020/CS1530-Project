@@ -1,13 +1,13 @@
 <template>
 	<div class="post">
 		<div class="message">
-			<h4>post</h4>
+			<h4>{{ msg }}</h4>
 		</div>
 
 		<div class="vote">
-			<font-awesome-icon icon="angle-up" />
-			<div class="count">0</div><!--  to be dynamically injected/calculated -->
-			<font-awesome-icon icon="angle-down" />
+				<font-awesome-icon icon="angle-up" />
+				<div class="votecount"> {{ votecount }} </div>
+				<font-awesome-icon icon="angle-down" />
 		</div>
 	</div>
 </template>
@@ -15,8 +15,14 @@
 <script>
 export default {
 	name: 'Post',
-		props: {
-			msg: String
+	props: {
+		msg: String,
+		votecount: Number
+	},
+	data: function() {
+		return {
+
+		}
 	}
 }
 </script>

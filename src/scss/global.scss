@@ -50,12 +50,12 @@ body {
 	right: 10px;
 	top: 15px;
 }
-.count{
+.votecount{
 
 }
 .vote {
-	display: inline-block;
 	width: 20vw;
+	margin: auto;
 }
 .newpostcontainer{
 	top: 80px;
@@ -77,6 +77,6 @@ body {
 	background-color: #5940DF;
 	color:white;
 	border-radius: 10px;
-	padding-top: 4px;
+	// padding-top: 4px;
 	border: none;
 }
