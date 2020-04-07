@@ -1,11 +1,13 @@
 <template>
 	<div class="home">
+		<!-- TODO: update v-bind:key=ost.id or delete if not needed -->
+		<!-- TODO: update v-bind:votecount when backend api is returning votecount -->
 		<post 	v-for="post in posts"
 				v-bind:key="post.id"
-				v-bind:msg="post.msg"
-				v-bind:votecount="post.votecount">
+				v-bind:msg="post.postMessage"
+				v-bind:votecount=10>
+				<!-- v-bind:votecount="post.votecount"> -->
 		</post>
-		<!-- TODO: update post.id or delete if not needed -->
 	</div>
 </template>
 
@@ -13,19 +15,22 @@
 import Post from '@/components/Post.vue'
 export default {
 	name: 'home',
-		components: {
-			Post
+	components: {
+		Post
 	},
 	data() {
 		return {
-			//TODO: AJAX call or whatever to fetch real data and delete mock data
-			posts: [
-				{ msg: "hahaha", votecount: 10 },
-				{ msg: "whatever", votecount: 23 },
-				{ msg: "April 6th, monday, blablabla blablala \n whats up", votecount: -10 },
-				{ msg: "April 6th, \n monday, \n blabl\nabla blablala \n whats up,\n something\aiyaya\ncfvgbhjnkmladgschjvnjknkajn\nvjkfnvkjanfjvnqjevnjlqnjlknlkj\nvnlkjanvkljanfjky", votecount: -100 }
-			]
+			posts: null
 		}
+	},
+	mounted() {
+		this.axios
+			// .get('http://3.22.49.236/getHomePosts?userLatitude=43&userLongitude=77.78&startIndex=0&retrieveLength=10')
+			.get('http://localhost:8080/getHomePosts?userLatitude=43&userLongitude=77.78&startIndex=0&retrieveLength=10')
+			.then(response => {
+				this.posts = response.data;
+				console.log(response.data);
+			})
 	}
 }
 </script>
