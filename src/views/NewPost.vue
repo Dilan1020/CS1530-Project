@@ -12,19 +12,16 @@ export default {
 		return {
 			postmessage: ""
 		}
-	}
-}
-</script>
-
-<script>
-export default {
+	},
 	methods: {
 		clickHandler: function(event) {
-			console.log("click registered")
+			this.postmessage = "";
+			console.log("click registered");
 		}
 	}
 }
 </script>
+
 
 <style lang="scss">
 @import "../scss/global.scss";

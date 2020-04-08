@@ -21,20 +21,15 @@ export default {
 	},
 	data: function() {
 		return {
-			
-		}
-	}
-}
-</script>
 
-<script>
-export default {
+		}
+	},
 	methods: {
 		voteUp: function(event) {
-			console.log("up vote")
+			console.log("up vote");
 		},
 		voteDown: function(event) {
-			console.log("down vote")
+			console.log("down vote");
 		}
 	}
 }
