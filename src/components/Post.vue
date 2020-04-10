@@ -26,10 +26,10 @@ export default {
 	},
 	methods: {
 		voteUp: function(event) {
-			console.log("up vote");
+			this.votecount++;
 		},
 		voteDown: function(event) {
-			console.log("down vote");
+			this.votecount--;
 		}
 	}
 }
