@@ -5,9 +5,9 @@
 		</div>
 
 		<div class="vote">
-				<font-awesome-icon icon="angle-up" />
+				<font-awesome-icon v-on:click="voteUp" icon="angle-up" />
 				<div class="votecount"> {{ votecount }} </div>
-				<font-awesome-icon icon="angle-down" />
+				<font-awesome-icon v-on:click="voteDown" icon="angle-down" />
 		</div>
 	</div>
 </template>
@@ -22,6 +22,14 @@ export default {
 	data: function() {
 		return {
 
+		}
+	},
+	methods: {
+		voteUp: function(event) {
+			this.votecount++;
+		},
+		voteDown: function(event) {
+			this.votecount--;
 		}
 	}
 }
