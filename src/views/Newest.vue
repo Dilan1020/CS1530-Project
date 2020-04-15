@@ -5,7 +5,7 @@
 		<post 	v-for="post in posts"
 				v-bind:key="post.id"
 				v-bind:msg="post.postMessage"
-				v-bind:votecount=10>
+				v-bind:votecount="post.score">
 				<!-- v-bind:votecount="post.votecount"> -->
 		</post>
 	</div>
