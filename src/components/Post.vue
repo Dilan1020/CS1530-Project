@@ -2,6 +2,9 @@
 	<div class="post">
 		<div class="message">
 			<h4>{{ msg }}</h4>
+			<div class="postDate">
+				{{ }}
+			</div>
 		</div>
 
 		<div class="vote">
