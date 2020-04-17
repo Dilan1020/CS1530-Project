@@ -1,7 +1,7 @@
 <template>
 	<div class="home">
 		<post 	v-for="post in posts"
-				v-bind:key="post.id"
+				v-bind:postID="post.postID"
 				v-bind:msg="post.postMessage"
 				v-bind:votecount="post.score">
 		</post>
@@ -12,8 +12,8 @@
 import Post from '@/components/Post.vue'
 export default {
 	name: 'home',
-		components: {
-			Post
+	components: {
+		Post
 	},
 	data() {
 		return {

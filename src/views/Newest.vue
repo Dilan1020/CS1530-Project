@@ -1,7 +1,7 @@
 <template>
 	<div class="home">
 		<post 	v-for="post in posts"
-				v-bind:key="post.id"
+				v-bind:postID="post.postID"
 				v-bind:msg="post.postMessage"
 				v-bind:votecount="post.score">
 		</post>
