@@ -3,7 +3,7 @@
 		<div class="message">
 			<h4>{{ msg }}</h4>
 			<div class="postDate">
-				{{ }}
+				{{ timestamp }}
 			</div>
 		</div>
 
@@ -21,11 +21,11 @@ export default {
 	props: {
 		msg: String,
 		votecount: Number,
-		postID: Number
+		postID: Number,
+		timestamp: String
 	},
 	data: function() {
 		return {
-			// baseurl: 'http://3.22.49.236/postUpdatePostScore?postID='
 			baseurl: 'http://localhost:8080/postUpdatePostScore?postID='
 		}
 	},
@@ -35,9 +35,6 @@ export default {
 			this.axios
 				.post(url)
 				.then(response => {
-					if (response.status == 200) {
-						alert("Successfully incremented votecount");
-					}
 					console.log(response.data);
 				})
 				.catch(error => {
@@ -50,9 +47,6 @@ export default {
 			this.axios
 				.post(url)
 				.then(response => {
-					if (response.status == 200) {
-						alert("Successfully decremented votecount");
-					}
 					console.log(response.data);
 				})
 				.catch(error => {

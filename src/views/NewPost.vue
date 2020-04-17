@@ -10,7 +10,6 @@ export default {
 	data() {
 		return {
 			postmessage: '',
-			// baseurl: 'http://3.22.49.236/postNewPost?'
 			baseurl: 'http://localhost:8080/postNewPost?'
 		}
 	},
@@ -19,14 +18,10 @@ export default {
 			console.log(this.postmessage);
 
 			//TODO: use actual geolocation
-			let url = this.baseurl + 'userLatitude=43.094337&userLongitude=-77.772974'
-			 		+ '&postText=' + this.postmessage;
+			let url = this.baseurl + 'userLatitude=43.094337&userLongitude=-77.772974' + '&postText=' + this.postmessage;
 			this.axios
 				.post(url)
 				.then(response => {
-					if (response.status == 200) {
-						alert("Successfully posted");
-					}
 					console.log(response.data);
 				})
 				.catch(error => {
