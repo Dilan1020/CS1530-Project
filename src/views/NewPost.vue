@@ -23,6 +23,9 @@ export default {
 				.post(url)
 				.then(response => {
 					console.log(response.data);
+					if (response.status == 200) {
+						window.location.href = "/newest";
+					}
 				})
 				.catch(error => {
 					console.log(error);
