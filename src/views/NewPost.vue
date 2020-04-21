@@ -1,6 +1,6 @@
 <template>
 	<div class="newpostcontainer">
-		<textarea v-model="postmessage" class="posttext"></textarea>
+		<textarea v-model="postmessage" class="posttext" id="textbox"></textarea>
 		<button v-on:click="clickHandler" class="postbutton">POST</button>
 	</div>
 </template>
@@ -34,23 +34,31 @@ export default {
 		},
 		clickHandler: function(event) {
 			console.log(this.postmessage);
-
 			let url = this.baseurl + 'userLatitude=' + this.latitude
 									+ '&userLongitude=' + this.longitude
 									+ '&postText=' + this.postmessage;
-			this.axios
-				.post(url)
-				.then(response => {
-					console.log(response.data);
-					if (response.status == 200) {
-						window.location.href = "/newest";
-					}
-				})
-				.catch(error => {
-					console.log(error);
-				});
+			// check if textarea has 200 characters or less
+			var count = document.getElementById("textbox").value.length;
+			if (count > 200) {
+				alert("Posts must be 200 characters or less.");
+				this.postmessage = "";
+			} else {
+				console.log("There were " + count + " characters in the post");
+				// push post to backend
+				this.axios
+					.post(url)
+					.then(response => {
+						console.log(response.data);
+						if (response.status == 200) {
+							window.location.href = "/newest";
+						}
+					})
+					.catch(error => {
+						console.log(error);
+					});
 
-			this.postmessage = "";
+				this.postmessage = "";
+			}
 		}
 	}
 }
