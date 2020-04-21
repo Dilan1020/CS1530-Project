@@ -57,8 +57,8 @@ export default {
 						console.log(error);
 					});
 
-				this.postmessage = "";
 			}
+			this.postmessage = "";
 		}
 	}
 }
