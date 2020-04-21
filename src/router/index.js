@@ -4,6 +4,7 @@ import Newest from '../views/Newest.vue'
 import Hottest from '../views/Hottest.vue'
 import NewPost from '../views/NewPost.vue'
 import FullPost from '../views/FullPost.vue'
+import Nearest from '../views/Nearest.vue'
 
 
 Vue.use(VueRouter)
@@ -22,6 +23,11 @@ const routes = [
 		// which is lazy-loaded when the route is visited.
 		// component: () => import(/* webpackChunkName: "about" */ '../views/Hottest.vue')
 		component: Hottest
+	},
+	{
+		path:'/nearest',
+		name: 'nearest',
+		component: Nearest
 	},
 	{
 		path: '/newpost',

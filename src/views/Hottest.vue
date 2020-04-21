@@ -33,7 +33,7 @@ export default {
 				this.sortByScore(response.data);
 				this.posts = response.data;
 				console.log(response.data);
-			})
+			});
 	}
 }
 </script>

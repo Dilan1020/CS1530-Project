@@ -10,15 +10,34 @@ export default {
 	data() {
 		return {
 			postmessage: '',
-			baseurl: 'http://localhost:8080/postNewPost?'
+			baseurl: 'http://localhost:8080/postNewPost?',
+			latitude: null,
+			longitude: null
+		}
+	},
+	mounted() {
+		if (!navigator.geolocation) {
+			// status.textContent = 'Geolocation is not supported by your browser';
+			this.cannotGetLocation();
+		} else {
+			navigator.geolocation.getCurrentPosition(this.getLocation, this.cannotGetLocation);
 		}
 	},
 	methods: {
+		cannotGetLocation() {
+			alert("can't get location");
+		},
+		getLocation(position) {
+			this.latitude = position.coords.latitude;
+			this.longitude = position.coords.longitude;
+			console.log("my location is: " + this.latitude + ", " + this.longitude);
+		},
 		clickHandler: function(event) {
 			console.log(this.postmessage);
 
-			//TODO: use actual geolocation
-			let url = this.baseurl + 'userLatitude=43.094337&userLongitude=-77.772974' + '&postText=' + this.postmessage;
+			let url = this.baseurl + 'userLatitude=' + this.latitude
+									+ '&userLongitude=' + this.longitude
+									+ '&postText=' + this.postmessage;
 			this.axios
 				.post(url)
 				.then(response => {
