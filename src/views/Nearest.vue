@@ -24,31 +24,36 @@ export default {
 			longitude: null
 		}
 	},
-	methods: {
-		cannotGetLocation() {
-			alert("Geolocation is not supported by your browser");
-		},
-		getLocation(position) {
-			this.latitude  = position.coords.latitude;
-			this.longitude = position.coords.longitude;
-			console.log("Getting posts based on my location: " + this.latitude + ", " + this.longitude);
-		}
-	},
 	mounted() {
-		if (!navigator.geolocation) {
-			this.cannotGetLocation();
-		} else {
-			navigator.geolocation.getCurrentPosition(this.getLocation, this.cannotGetLocation);
+		var getPosition = function (options) {
+			return new Promise(function (resolve, reject) {
+				navigator.geolocation.getCurrentPosition(resolve, reject, options);
+				});
 		}
 
-		this.axios
-			.get(this.baseurl + 'userLatitude=' + this.latitude
-						 + '&userLongitude=' + this.longitude
-						 + '&startIndex=0&retrieveLength=100')
-			.then(response => {
-				this.posts = response.data;
-				console.log(response.data);
-			})
+		getPosition()
+			.then((position) => {
+				this.latitude  = position.coords.latitude;
+				this.longitude = position.coords.longitude;
+				console.log("Getting posts nearest to: " + this.latitude + ", " + this.longitude);
+
+				let url = this.baseurl + 'userLatitude=' + this.latitude
+							 + '&userLongitude=' + this.longitude
+							 + '&startIndex=0&retrieveLength=100';
+				console.log("url: " + url);
+
+				this.axios
+					.get(this.baseurl + 'userLatitude=' + this.latitude
+								 + '&userLongitude=' + this.longitude
+								 + '&startIndex=0&retrieveLength=100')
+					.then(response => {
+						this.posts = response.data;
+						console.log(response.data);
+					})
+		})
+		.catch((err) => {
+			console.error(err.message);
+		});
 	}
 }
 </script>

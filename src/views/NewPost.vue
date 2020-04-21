@@ -1,6 +1,6 @@
 <template>
 	<div class="newpostcontainer">
-		<textarea v-model="postmessage" class="posttext" id="textbox"></textarea>
+		<textarea v-model="postmessage" class="posttext"></textarea>
 		<button v-on:click="clickHandler" class="postbutton">POST</button>
 	</div>
 </template>
@@ -25,12 +25,12 @@ export default {
 	},
 	methods: {
 		cannotGetLocation() {
-			alert("can't get location");
+			alert("Can't get location");
 		},
 		getLocation(position) {
 			this.latitude = position.coords.latitude;
 			this.longitude = position.coords.longitude;
-			console.log("my location is: " + this.latitude + ", " + this.longitude);
+			console.log("Posting at location: " + this.latitude + ", " + this.longitude);
 		},
 		clickHandler: function(event) {
 			console.log(this.postmessage);
@@ -38,7 +38,7 @@ export default {
 									+ '&userLongitude=' + this.longitude
 									+ '&postText=' + this.postmessage;
 			// check if textarea has 200 characters or less
-			var count = document.getElementById("textbox").value.length;
+			let count = this.postmessage.length;
 			if (count > 200) {
 				alert("Posts must be 200 characters or less.");
 				this.postmessage = "";
