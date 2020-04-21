@@ -54,6 +54,11 @@ export default {
 				});
 			this.votecount--;
 		}
+	},
+	mounted() {
+		var temp1 = this.timestamp.replace("T", " ");
+		var temp2 = temp1.replace(".000Z", "");
+		this.timestamp = temp2;
 	}
 }
 </script>

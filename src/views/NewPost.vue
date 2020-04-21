@@ -41,7 +41,6 @@ export default {
 			let count = this.postmessage.length;
 			if (count > 200) {
 				alert("Posts must be 200 characters or less.");
-				this.postmessage = "";
 			} else {
 				console.log("There were " + count + " characters in the post");
 				// push post to backend
@@ -56,7 +55,6 @@ export default {
 					.catch(error => {
 						console.log(error);
 					});
-
 			}
 			this.postmessage = "";
 		}
