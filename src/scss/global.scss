@@ -27,6 +27,11 @@
 body {
 	margin: 0px;;
 }
+.color-route {
+	padding: 3px;
+	border: 1px solid white;
+	border-radius: 5px;
+}
 .discover{
 	top: 80px;
 	position: absolute;
@@ -60,7 +65,7 @@ body {
 	margin: auto;
 }
 .postDate {
-	width: 175px;
+	width: 120px;
 	font-size: 12px;
 	font-weight: bold;
 	color: gray;

@@ -3,7 +3,7 @@
 		<div class="message">
 			<h4>{{ msg }}</h4>
 			<div class="postDate">
-				{{ timestamp }}
+				{{ this.formatDate(timestamp) }}
 			</div>
 		</div>
 
@@ -30,6 +30,11 @@ export default {
 		}
 	},
 	methods: {
+		formatDate(date) {
+			let temp1 = date.replace("T", " ");
+			let temp2 = temp1.replace(".000Z", "");
+			return temp2;
+		},
 		voteUp: function(event) {
 			let url = this.baseurl + this.postID + "&scoreOffset=1";
 			this.axios
@@ -54,11 +59,6 @@ export default {
 				});
 			this.votecount--;
 		}
-	},
-	mounted() {
-		var temp1 = this.timestamp.replace("T", " ");
-		var temp2 = temp1.replace(".000Z", "");
-		this.timestamp = temp2;
 	}
 }
 </script>
