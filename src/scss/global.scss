@@ -27,6 +27,11 @@
 body {
 	margin: 0px;;
 }
+.color-route {
+	padding: 3px;
+	border: 1px solid white;
+	border-radius: 5px;
+}
 .discover{
 	top: 80px;
 	position: absolute;
@@ -44,6 +49,8 @@ body {
 	display: inline-block;
 	box-sizing: border-box;
 	border-right: 2px solid #5940DF;
+	word-wrap: break-word;
+	padding: 0 8px;
 }
 .newpostbutton {
 	position: fixed;
@@ -56,6 +63,12 @@ body {
 .vote {
 	width: 20vw;
 	margin: auto;
+}
+.postDate {
+	width: 130px;
+	font-size: 12px;
+	font-weight: bold;
+	color: gray;
 }
 .newpostcontainer{
 	top: 80px;

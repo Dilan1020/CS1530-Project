@@ -10,29 +10,52 @@ export default {
 	data() {
 		return {
 			postmessage: '',
-			// baseurl: 'http://3.22.49.236/postNewPost?'
-			baseurl: 'http://localhost:8080/postNewPost?'
+			baseurl: 'http://localhost:8080/postNewPost?',
+			latitude: null,
+			longitude: null
+		}
+	},
+	mounted() {
+		if (!navigator.geolocation) {
+			// status.textContent = 'Geolocation is not supported by your browser';
+			this.cannotGetLocation();
+		} else {
+			navigator.geolocation.getCurrentPosition(this.getLocation, this.cannotGetLocation);
 		}
 	},
 	methods: {
+		cannotGetLocation() {
+			alert("Can't get location");
+		},
+		getLocation(position) {
+			this.latitude = position.coords.latitude;
+			this.longitude = position.coords.longitude;
+			console.log("Posting at location: " + this.latitude + ", " + this.longitude);
+		},
 		clickHandler: function(event) {
 			console.log(this.postmessage);
-
-			//TODO: use actual geolocation
-			let url = this.baseurl + 'userLatitude=43.094337&userLongitude=-77.772974'
-			 		+ '&postText=' + this.postmessage;
-			this.axios
-				.post(url)
-				.then(response => {
-					if (response.status == 200) {
-						alert("Successfully posted");
-					}
-					console.log(response.data);
-				})
-				.catch(error => {
-					console.log(error);
-				});
-
+			let url = this.baseurl + 'userLatitude=' + this.latitude
+									+ '&userLongitude=' + this.longitude
+									+ '&postText=' + this.postmessage;
+			// check if textarea has 200 characters or less
+			let count = this.postmessage.length;
+			if (count > 200) {
+				alert("Posts must be 200 characters or less.");
+			} else {
+				console.log("There were " + count + " characters in the post");
+				// push post to backend
+				this.axios
+					.post(url)
+					.then(response => {
+						console.log(response.data);
+						if (response.status == 200) {
+							window.location.href = "/newest";
+						}
+					})
+					.catch(error => {
+						console.log(error);
+					});
+			}
 			this.postmessage = "";
 		}
 	}
