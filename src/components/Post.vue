@@ -31,9 +31,14 @@ export default {
 	},
 	methods: {
 		formatDate(date) {
-			let temp1 = date.replace("T", " ");
-			let temp2 = temp1.replace(".000Z", "");
-			return temp2;
+			let d = new Date(date);
+
+            let usaTime = d.toLocaleString('en-US', { timeZone: 'UTC' });
+			return usaTime;
+			// return d.toUTCString();
+			// let temp1 = date.replace("T", " ");
+			// let temp2 = temp1.replace(".000Z", "");
+			// return temp2;
 		},
 		voteUp: function(event) {
 			let url = this.baseurl + this.postID + "&scoreOffset=1";
